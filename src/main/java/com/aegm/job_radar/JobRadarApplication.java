@@ -19,6 +19,8 @@ public class JobRadarApplication {
 	CommandLineRunner verificarConfig(TelegramProperties props){
 		return args -> {
 			System.out.println("El length del token es: " + props.botToken().length());
+			System.out.println("El chatID se cargo correctamente: " + (props.chatId()!= 0L ? "Si":"No")) ;
+
 		};
 	}
 

@@ -1,5 +1,6 @@
 package com.aegm.job_radar.config;
 
+import jakarta.validation.constraints.NotNull;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.validation.annotation.Validated;
 
@@ -7,4 +8,7 @@ import jakarta.validation.constraints.NotBlank;
 
 @Validated 
 @ConfigurationProperties(prefix = "telegram")
-public record TelegramProperties(@NotBlank String botToken) {}
+public record TelegramProperties(
+            @NotBlank String botToken,
+            @NotNull Long chatId
+                                 ) {}
