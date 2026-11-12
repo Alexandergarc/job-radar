@@ -1,6 +1,7 @@
 package com.aegm.job_radar;
 
 import com.aegm.job_radar.config.TelegramProperties;
+import com.aegm.job_radar.telegram.TelegramClient;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -16,11 +17,11 @@ public class JobRadarApplication {
 	}
 	
 	@Bean
-	CommandLineRunner verificarConfig(TelegramProperties props){
+	CommandLineRunner verificarConfig(TelegramProperties props, TelegramClient telegramClient){
 		return args -> {
 			System.out.println("El length del token es: " + props.botToken().length());
 			System.out.println("El chatID se cargo correctamente: " + (props.chatId()!= 0L ? "Si":"No")) ;
-
+			telegramClient.sendMessage(props.chatId(), "mensaje desde Java");
 		};
 	}
 
